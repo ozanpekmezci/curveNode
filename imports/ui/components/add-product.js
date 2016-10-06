@@ -1,32 +1,32 @@
 import React from 'react';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { insertDocument } from '../../api/documents/methods.js';
+import { insertProduct } from '../../api/products/methods.js';
 
-const handleInsertDocument = (event) => {
+const handleInsertProduct = (event) => {
   const target = event.target;
   const title = target.value.trim();
 
   if (title !== '' && event.keyCode === 13) {
-    insertDocument.call({
+    insertProduct.call({
       title,
     }, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
         target.value = '';
-        Bert.alert('Document added!', 'success');
+        Bert.alert('Product added!', 'success');
       }
     });
   }
 };
 
-export const AddDocument = () => (
+export const AddProduct = () => (
   <FormGroup>
     <FormControl
       type="text"
-      onKeyUp={ handleInsertDocument }
-      placeholder="Type a document title and press enter..."
+      onKeyUp={ handleInsertProduct }
+      placeholder="Type a product title and press enter..."
     />
   </FormGroup>
 );

@@ -2,10 +2,10 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
 import { assert } from 'meteor/practicalmeteor:chai';
-import { Documents } from './documents.js';
+import { Products } from './products.js';
 
-describe('Documents collection', function () {
+describe('Products collection', function () {
   it('registers the collection with Mongo properly', function () {
-    assert.equal(typeof Documents, 'object');
+    assert.equal(typeof Products, 'object');
   });
 });

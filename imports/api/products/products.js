@@ -3,29 +3,29 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 
-export const Documents = new Mongo.Collection('Documents');
+export const Products = new Mongo.Collection('Products');
 
-Documents.allow({
+Products.allow({
   insert: () => false,
   update: () => false,
   remove: () => false,
 });
 
-Documents.deny({
+Products.deny({
   insert: () => true,
   update: () => true,
   remove: () => true,
 });
 
-Documents.schema = new SimpleSchema({
+Products.schema = new SimpleSchema({
   title: {
     type: String,
-    label: 'The title of the document.',
+    label: 'The title of the product.',
   },
 });
 
-Documents.attachSchema(Documents.schema);
+Products.attachSchema(Products.schema);
 
-Factory.define('document', Documents, {
+Factory.define('product', Products, {
   title: () => faker.hacker.phrase(),
 });

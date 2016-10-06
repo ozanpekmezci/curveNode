@@ -3,8 +3,8 @@ import { Jumbotron } from 'react-bootstrap';
 
 export const Index = () => (
   <Jumbotron className="text-center">
-    <h2>Base</h2>
-    <p>A starting point for Meteor applications.</p>
+    <h2>Curve</h2>
+    <p>A marketplace to sell goods.</p>
     <p><a className="btn btn-success" href="https://themeteorchef.com/base" role="button">Read the Documentation</a></p>
     <p style={ { fontSize: '16px', color: '#aaa' } }>Currently at v4.7.0</p>
   </Jumbotron>
