@@ -22,6 +22,9 @@ Products.schema = new SimpleSchema({
     type: String,
     label: 'The title of the product.',
   },
+    description: { type: String, label: 'The description of the product' },
+    price: { type: Number, label: 'The price of the product' },
+    tags: { type: [String], label: 'The tags of the product' },
 });
 
 Products.attachSchema(Products.schema);

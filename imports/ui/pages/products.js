@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductsList from '../containers/products-list.js';
-import { AddProduct } from '../components/add-product.js';
+import  AddProduct  from '../components/add-product.js';
 
 export const Products = () => (
   <Row>
