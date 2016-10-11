@@ -1,7 +1,7 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
-import { Products } from './products';
-import { rateLimit } from '../../modules/rate-limit.js';
+import Products from './products';
+import rateLimit from '../../modules/rate-limit.js';
 
 export const insertProduct = new ValidatedMethod({
   name: 'products.insert',

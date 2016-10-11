@@ -7,6 +7,9 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import  handleAddition  from '../../modules/add-product';
 
 export default class AddProduct extends React.Component {
+  static handleSubmit(event) {
+    event.preventDefault();
+  }
   constructor(props) {
     super(props);
 
@@ -23,12 +26,10 @@ export default class AddProduct extends React.Component {
   componentDidUpdate() {
     handleAddition({ component: this });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+
 
   toggleForm() {
-    this.setState({ adding: !this.state.adding });
+    this.setState({ adding: !this.state.adding,tags:[] });
   }
   handleDelete(i) {
     const tags = this.state.tags;
@@ -67,7 +68,7 @@ export default class AddProduct extends React.Component {
         {this.state.adding ?
           <Row>
             <Col xs={12} sm={6} md={4}>
-              <form ref="addProduct" className="addProduct" onSubmit={this.handleSubmit}>
+              <form ref="addProduct" className="addProduct" onSubmit={AddProduct.handleSubmit}>
                 <Row>
                   <FormGroup>
                     <FormControl

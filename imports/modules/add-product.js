@@ -3,7 +3,7 @@ import 'jquery-validation';
 // import { browserHistory } from 'react-router';
 // import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { getInputValue } from './get-input-value';
+import getInputValue from './get-input-value';
 import { insertProduct } from '../api/products/methods.js';
 
 let component;

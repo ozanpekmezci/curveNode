@@ -12,20 +12,21 @@ const userName = () => {
   return user ? `${name.first} ${name.last}` : '';
 };
 
-export const AuthenticatedNavigation = () => (
+const AuthenticatedNavigation = () => (
   <div>
     <Nav>
       <IndexLinkContainer to="/">
-        <NavItem eventKey={ 1 } href="/">Index</NavItem>
+        <NavItem eventKey={1} href="/">Index</NavItem>
       </IndexLinkContainer>
       <LinkContainer to="/products">
-        <NavItem eventKey={ 2 } href="/products">Products</NavItem>
+        <NavItem eventKey={2} href="/products">Products</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>
-      <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
-        <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
+      <NavDropdown eventKey={3} title={userName()} id="basic-nav-dropdown">
+        <MenuItem eventKey={3.1} onClick={handleLogout}>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>
 );
+export default AuthenticatedNavigation;

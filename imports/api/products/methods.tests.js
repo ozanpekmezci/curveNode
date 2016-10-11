@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { assert } from 'meteor/practicalmeteor:chai';
 import { resetDatabase } from 'meteor/xolvio:cleaner';
 import { Factory } from 'meteor/dburles:factory';
-import { Products } from './products.js';
+import Products from './products.js';
 import { insertProduct, updateProduct, removeProduct } from './methods.js';
 
 describe('Products methods', function () {

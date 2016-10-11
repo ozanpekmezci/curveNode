@@ -3,7 +3,7 @@ import 'jquery-validation';
 import { browserHistory } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { getInputValue } from './get-input-value';
+import getInputValue from './get-input-value';
 
 let component;
 let token;
@@ -47,8 +47,9 @@ const validate = () => {
   });
 };
 
-export const handleResetPassword = (options) => {
+const handleResetPassword = (options) => {
   component = options.component;
   token = options.token;
   validate();
 };
+export default handleResetPassword;

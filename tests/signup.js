@@ -5,6 +5,7 @@ describe('Sign Up', function () {
   beforeEach(function () {
     server.execute(function () {
       const { Meteor } = require('meteor/meteor');
+
       const user = Meteor.users.findOne({ 'emails.address': 'carl.winslow@abc.com' });
       if (user) {
         Meteor.users.remove(user._id);

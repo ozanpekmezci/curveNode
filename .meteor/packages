@@ -35,3 +35,5 @@ dburles:factory
 ddp-rate-limiter@1.0.5
 react-meteor-data
 shell-server
+aldeed:simple-schema
+practicalmeteor:chai

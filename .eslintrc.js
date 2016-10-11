@@ -1,8 +1,17 @@
 module.exports = {
-  "extends": "airbnb",
+  "globals": {
+    "document": true,
+    "foo": true,
+    "window": true,
+    "confirm": true,
+    "server": true,
+    "browser":true,
+    "expect":true
+  },
   plugins: [
-    'react',
+    'react','meteor',
   ],
+  "extends": ["airbnb","eslint:recommended", "plugin:react/recommended","plugin:meteor/recommended"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -34,8 +43,8 @@ module.exports = {
         'componentWillUpdate',
         'componentDidUpdate',
         'componentWillUnmount',
-        'handleSubmit',
-        'renderNavigation',
+      //  'handleSubmit',
+        //'renderNavigation',
       ],
     }],
 
@@ -299,7 +308,7 @@ module.exports = {
     "import/resolver": "meteor",
     react: {
       pragma: 'React',
-      version: '0.14'
+      version: '15.0'
     },
   }
 };

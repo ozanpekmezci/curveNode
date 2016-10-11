@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import { handleLogin } from '../../modules/login';
+import handleLogin from '../../modules/login';
 
-export class Login extends React.Component {
+class Login extends React.Component {
+  static handleSubmit(event) {
+    event.preventDefault();
+  }
   componentDidMount() {
     handleLogin({ component: this });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+
 
   render() {
-    return <Row>
-      <Col xs={ 12 } sm={ 6 } md={ 4 }>
+    return( <Row>
+      <Col xs={12} sm={6} md={4}>
         <h4 className="page-header">Login</h4>
-        <form ref="login" className="login" onSubmit={ this.handleSubmit }>
+        <form ref="login" className="login" onSubmit={Login.handleSubmit}>
           <FormGroup>
             <ControlLabel>Email Address</ControlLabel>
             <FormControl
@@ -41,6 +42,7 @@ export class Login extends React.Component {
           <Button type="submit" bsStyle="success">Login</Button>
         </form>
       </Col>
-    </Row>;
+    </Row>);
   }
 }
+export default Login;

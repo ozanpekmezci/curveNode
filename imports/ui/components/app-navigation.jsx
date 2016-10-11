@@ -1,16 +1,16 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router';
-import { PublicNavigation } from './public-navigation';
-import { AuthenticatedNavigation } from './authenticated-navigation';
+import PublicNavigation from './public-navigation.jsx';
+import AuthenticatedNavigation from './authenticated-navigation.jsx';
 
-export class AppNavigation extends React.Component {
-  renderNavigation(hasUser) {
+class AppNavigation extends React.Component {
+  static renderNavigation(hasUser) {
     return hasUser ? <AuthenticatedNavigation /> : <PublicNavigation />;
   }
 
   render() {
-    return <Navbar>
+    return( <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">Curve</Link>
@@ -18,12 +18,12 @@ export class AppNavigation extends React.Component {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-        { this.renderNavigation(this.props.hasUser) }
+        { AppNavigation.renderNavigation(this.props.hasUser) }
       </Navbar.Collapse>
-    </Navbar>;
+    </Navbar>);
   }
 }
-
+export default AppNavigation;
 AppNavigation.propTypes = {
   hasUser: React.PropTypes.object,
 };

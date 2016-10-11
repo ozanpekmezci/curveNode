@@ -1,8 +1,8 @@
 import { composeWithTracker } from 'react-komposer';
-import { Products } from '../../api/products/products.js';
-import { ProductsList } from '../components/products-list.js';
-import { Loading } from '../components/loading.js';
 import { Meteor } from 'meteor/meteor';
+import Products from '../../api/products/products.js';
+import ProductsList from '../components/products-list.jsx';
+import Loading from '../components/loading.jsx';
 
 const composer = (params, onData) => {
   const subscription = Meteor.subscribe('products');

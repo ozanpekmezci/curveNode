@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'jquery-validation';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { getInputValue } from './get-input-value';
+import getInputValue from './get-input-value';
 
 let component;
 
@@ -36,7 +36,8 @@ const validate = () => {
   });
 };
 
-export const handleRecoverPassword = (options) => {
+const handleRecoverPassword = (options) => {
   component = options.component;
   validate();
 };
+export default handleRecoverPassword;

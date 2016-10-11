@@ -37,24 +37,29 @@ const handleRemoveProduct = (productId, event) => {
   }
 };
 
-export const Product = ({ product }) => (
-  <ListGroupItem key={ product._id }>
+const Product = ({ product }) => (
+  <ListGroupItem key={product._id}>
     <Row>
-      <Col xs={ 8 } sm={ 10 }>
+      <Col xs={8} sm={10}>
         <FormControl
           type="text"
-          defaultValue={ product.title }
-          onKeyUp={ handleUpdateProduct.bind(this, product._id) }
+          defaultValue={product.title}
+          onKeyUp={handleUpdateProduct.bind(this, product._id)}
         />
       </Col>
-      <Col xs={ 4 } sm={ 2 }>
+      <Col xs={4} sm={2}>
         <Button
           bsStyle="danger"
           className="btn-block"
-          onClick={ handleRemoveProduct.bind(this, product._id) }>
+          onClick={handleRemoveProduct.bind(this, product._id)}>
           Remove
         </Button>
       </Col>
     </Row>
   </ListGroupItem>
 );
+Product.propTypes = {
+  product: React.PropTypes.object,
+};
+
+export default Product;
