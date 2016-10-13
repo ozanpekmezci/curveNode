@@ -1,10 +1,11 @@
 import $ from 'jquery';
 import 'jquery-validation';
+import {Meteor} from 'meteor/meteor';
 // import { browserHistory } from 'react-router';
 // import { Accounts } from 'meteor/accounts-base';
-import { Bert } from 'meteor/themeteorchef:bert';
+import {Bert} from 'meteor/themeteorchef:bert';
 import getInputValue from './get-input-value';
-import { insertProduct } from '../api/products/methods.js';
+import {insertProduct} from '../api/products/methods.js';
 
 let component;
 
@@ -12,7 +13,7 @@ const getProductData = () => ({
   title: getInputValue(component.refs.title),
   description: getInputValue(component.refs.description),
   price: parseInt(getInputValue(component.refs.price), 10),
-  tags: component.state.tags.map(tag => tag.text),
+  tags: component.state.tags.map(tag => tag.text)
 });
 
 const add = () => {
@@ -21,8 +22,13 @@ const add = () => {
   const description = product.description;
   const price = product.price;
   const tags = product.tags;
+  const userId = Meteor.userId();
   insertProduct.call({
-    title, description, price, tags,
+    title,
+    description,
+    price,
+    tags,
+    userId
   }, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
@@ -39,32 +45,34 @@ const validate = () => {
     rules: {
       title: {
         required: true,
-        maxlength: 200,
+        maxlength: 200
       },
       description: {
         required: true,
-        maxlength: 1000,
+        maxlength: 1000
       },
       price: {
         required: true,
-        min: 1,
-      },
+        min: 1
+      }
     },
     messages: {
       title: {
         required: 'Title?',
-        maxlength: 'Make it shorter',
+        maxlength: 'Make it shorter'
       },
       description: {
         required: 'Description?',
-        maxlength: 'Make it shorter',
+        maxlength: 'Make it shorter'
       },
       price: {
         required: 'Need a price here.',
-        min: 'Price needs to be positive',
-      },
+        min: 'Price needs to be positive'
+      }
     },
-    submitHandler() { add(); },
+    submitHandler() {
+      add();
+    }
   });
 };
 

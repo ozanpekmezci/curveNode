@@ -1,5 +1,6 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
+import { Meteor } from 'meteor/meteor';
 import Products from './products';
 import rateLimit from '../../modules/rate-limit.js';
 
@@ -10,6 +11,7 @@ export const insertProduct = new ValidatedMethod({
     description: { type: String, max: 1000 },
     price: { type: Number, min: 1 },
     tags: { type: [String], maxCount: 10 },
+    userId: {type: String},
   }).validator(),
   run(product) {
     Products.insert(product);
@@ -23,6 +25,15 @@ export const updateProduct = new ValidatedMethod({
     'update.title': { type: String, optional: true },
   }).validator(),
   run({ _id, update }) {
+    if (!this.userId) {
+     // Throw errors with a specific error code
+     throw new Meteor.Error('Products.methods.updateProduct.notLoggedIn',
+       'Must be logged in to update product.');
+   }
+    const product = Products.findOne(_id);
+    if(this.userId !==product.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
     Products.update(_id, { $set: update });
   },
 });
@@ -33,6 +44,15 @@ export const removeProduct = new ValidatedMethod({
     _id: { type: String },
   }).validator(),
   run({ _id }) {
+    if (!this.userId) {
+     // Throw errors with a specific error code
+     throw new Meteor.Error('Products.methods.removeProduct.notLoggedIn',
+       'Must be logged in to remove products.');
+   }
+    const product = Products.findOne(_id);
+    if(this.userId !==product.userId) {
+      throw new Meteor.Error('not-authorized', "You are not the the creator of the product");
+    }
     Products.remove(_id);
   },
 });

@@ -8,7 +8,8 @@ const composer = (params, onData) => {
   const subscription = Meteor.subscribe('products');
   if (subscription.ready()) {
     const products = Products.find().fetch();
-    onData(null, { products });
+    const user =Meteor.user();
+    onData(null, { products,user });
   }
 };
 
