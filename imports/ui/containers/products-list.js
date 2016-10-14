@@ -5,9 +5,9 @@ import ProductsList from '../components/products-list.jsx';
 import Loading from '../components/loading.jsx';
 
 const composer = (params, onData) => {
-  const subscription = Meteor.subscribe('products');
+  const subscription = Meteor.subscribe('products',params.searchValue);
   if (subscription.ready()) {
-    const products = Products.find().fetch();
+    const products = Products.find({}, { sort: [["score", "desc"]] }).fetch();
     const user =Meteor.user();
     onData(null, { products,user });
   }
