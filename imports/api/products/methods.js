@@ -12,6 +12,7 @@ export const insertProduct = new ValidatedMethod({
     price: { type: Number, min: 1 },
     tags: { type: [String], maxCount: 10 },
     userId: {type: String},
+    timestamp: {type: Date}
   }).validator(),
   run(product) {
     Products.insert(product);

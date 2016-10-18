@@ -41,6 +41,10 @@ Products.schema = new SimpleSchema({
   userId: {
     type: String,
     label: 'The userID of the product'
+  },
+  timestamp: {
+    type: Date,
+    label: 'The date of creation'
   }
 });
 

@@ -52,6 +52,15 @@ class Signup extends React.Component {
             />
           </FormGroup>
           <FormGroup>
+            <ControlLabel>Username</ControlLabel>
+            <FormControl
+              type="text"
+              ref="username"
+              name="username"
+              placeholder="Username"
+            />
+          </FormGroup>
+          <FormGroup>
             <ControlLabel>Password</ControlLabel>
             <FormControl
               type="password"

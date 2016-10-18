@@ -9,13 +9,14 @@ const users = [{
     name: { first: 'Carl', last: 'Winslow' },
   },
   roles: ['admin'],
+  username: "Carloco",
 }];
 
-users.forEach(({ email, password, profile, roles }) => {
+users.forEach(({ email, password, profile, roles,username }) => {
   const userExists = Meteor.users.findOne({ 'emails.address': email });
 
   if (!userExists) {
-    const userId = Accounts.createUser({ email, password, profile });
+    const userId = Accounts.createUser({ email, password, profile,username });
     Roles.addUsersToRoles(userId, roles);
   }
 });

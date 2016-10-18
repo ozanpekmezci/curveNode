@@ -1,38 +1,33 @@
 import React from 'react';
-import { Row, Col,FormGroup, FormControl } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import ProductsList from '../containers/products-list.js';
 import  AddProduct  from '../components/add-product.jsx';
+import SearchBar from '../components/search-bar.jsx';
+import FollowUsers from '../containers/follow-users.jsx';
+
 
 export default class Products extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleUserInput = this.handleUserInput.bind(this);
     this.state = {searchValue:"",};
 }
-  handleSearch(event) {
-  const target = event.target;
-  const searchValue = target.value.trim();
-
-  if (searchValue !== '') {
-      this.setState({ searchValue: searchValue });
-}else{
-  this.setState({ searchValue: null });
-}
-}
+handleUserInput(searchValue) {
+   this.setState({
+     searchValue: searchValue,
+   });
+ }
   render() {
     return(
       <Row>
-        <Col xs={12}>
+        <Col xs={12} sm={8} md={8}>
           <h4 className="page-header">Products</h4>
-          <FormGroup>
-            <FormControl
-              type="text"
-              onKeyUp={this.handleSearch}
-              placeholder="Enter search terms here."
-            />
-          </FormGroup>
+          <SearchBar onUserInput={this.handleUserInput} />
           <AddProduct />
           <ProductsList searchValue={this.state.searchValue} />
+        </Col>
+        <Col xs={12} sm={4} md={4}>
+          <FollowUsers />
         </Col>
       </Row>);
 }

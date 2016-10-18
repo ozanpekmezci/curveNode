@@ -10,6 +10,7 @@ let component;
 const getUserData = () => ({
   email: getInputValue(component.refs.emailAddress),
   password: getInputValue(component.refs.password),
+  username: getInputValue(component.refs.username),
   profile: {
     name: {
       first: getInputValue(component.refs.firstName),
@@ -48,6 +49,11 @@ const validate = () => {
         required: true,
         minlength: 6,
       },
+      username: {
+        required: true,
+        minlength: 6,
+        maxlength: 20,
+      },
     },
     messages: {
       firstName: {
@@ -63,6 +69,11 @@ const validate = () => {
       password: {
         required: 'Need a password here.',
         minlength: 'Use at least six characters, please.',
+      },
+      username: {
+        required: 'Need a username here.',
+        minlength: 'Use at least six characters, please.',
+        maxlength: 'Use at most 20 characters, please.',
       },
     },
     submitHandler() { signUp(); },

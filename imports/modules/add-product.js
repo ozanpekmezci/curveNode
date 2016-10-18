@@ -23,12 +23,14 @@ const add = () => {
   const price = product.price;
   const tags = product.tags;
   const userId = Meteor.userId();
+  const timestamp= new Date();
   insertProduct.call({
     title,
     description,
     price,
     tags,
-    userId
+    userId,
+    timestamp
   }, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
