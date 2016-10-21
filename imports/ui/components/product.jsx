@@ -1,7 +1,9 @@
 import React from 'react';
 import {Row, Col, ListGroupItem, FormControl, Button} from 'react-bootstrap';
 import {Bert} from 'meteor/themeteorchef:bert';
+import {Link} from 'react-router'
 import {updateProduct, removeProduct} from '../../api/products/methods.js';
+
 
 const handleUpdateProduct = (productId, event) => {
   const title = event.target.value.trim();
@@ -46,7 +48,7 @@ const Product = ({product, currentUser}) => (
         {currentUser._id === product.userId
           ? <FormControl type="text" defaultValue={product.title} onKeyUp={handleUpdateProduct.bind(this, product._id)} />
           : <span className="text">
-            <strong>{product.title}</strong>
+            <strong><Link to={`/products/${product._id}`}>{product.title}</Link></strong>
           </span>
 }
       </Col>
