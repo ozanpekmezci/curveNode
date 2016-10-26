@@ -7,8 +7,8 @@ const ProductDetail = ({params}) => (
   <Row>
     <Col xs={12}>
       <h4 className="page-header">Product Details</h4>
-      <AddSupply postId={params.id} />
-      <SuppliesList postId={params.id} />
+      <AddSupply productId={params.id} />
+      <SuppliesList productId={params.id} />
     </Col>
   </Row>
 );

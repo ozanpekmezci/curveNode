@@ -5,7 +5,7 @@ import SuppliesList from '../components/supplies-list.jsx';
 import Loading from '../components/loading.jsx';
 
 const composer = (params, onData) => {
-  const subscription = Meteor.subscribe('supplies',params.postId);
+  const subscription = Meteor.subscribe('supplies',params.productId);
   if (subscription.ready()) {
     const supplies = Supplies.find({}).fetch();
     const user =Meteor.user();

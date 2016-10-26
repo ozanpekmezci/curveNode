@@ -18,9 +18,9 @@ Supplies.deny({
 });
 
 Supplies.schema = new SimpleSchema({
-  postId: {
+  productId: {
     type: String,
-    label: "The ID of the post that the supply was sent to"
+    label: "The ID of the product that the supply was sent to"
   },
   userId: {
     type: String,

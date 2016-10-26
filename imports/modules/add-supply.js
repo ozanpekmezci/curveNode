@@ -12,7 +12,7 @@ let component;
 const getSupplyData = () => ({
   description: getInputValue(component.refs.description),
   price: parseInt(getInputValue(component.refs.price), 10),
-  postId: component.props.postId,
+  productId: component.props.productId,
   timestamp: new Date(),
   userId: Meteor.userId(),
 });

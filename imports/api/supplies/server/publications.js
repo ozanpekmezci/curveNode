@@ -3,7 +3,7 @@ import { check } from 'meteor/check';
 import Supplies from '../supplies';
 
 
-Meteor.publish('supplies', function(postId) {
-  check(postId, String);
-  return Supplies.find({ postId: postId });
+Meteor.publish('supplies', function(productId) {
+  check(productId, String);
+  return Supplies.find({ productId: productId });
 });

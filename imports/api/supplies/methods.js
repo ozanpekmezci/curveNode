@@ -10,7 +10,7 @@ export const insertSupply = new ValidatedMethod({
     description: { type: String, max: 1000 },
     price: { type: Number, min: 1 },
     userId: {type: String},
-    postId: {type: String},
+    productId: {type: String},
     timestamp: {type: Date}
   }).validator(),
   run(supply) {
