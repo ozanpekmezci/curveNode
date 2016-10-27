@@ -1,36 +1,38 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Meteor } from 'meteor/meteor';
-import Messages from './messages';
+import Conversations from './conversations';
 import rateLimit from '../../modules/rate-limit.js';
 
-const insertMessage = new ValidatedMethod({
-  name: 'messages.insert',
+const insertConversation = new ValidatedMethod({
+  name: 'conversation.insert',
   validate: new SimpleSchema({
-    senderId: {type: String},
-    receiverId: {type: String},
+    userOne: {type: String},
+    userTwo: {type: String},
     channelId: {type: String},
-    orderId: {type: String},
-    timestamp: {type: Date},
-    body: {type: String}
+    channelType: {type: String},
+    timestamp: {type: Date}
   }).validator(),
-  run(message) {
+  run(conversation) {
     if (!this.userId) {
      // Throw errors with a specific error code
-     throw new Meteor.Error('Messages.methods.insertMessage.notLoggedIn',
-       'Must be logged in to send a message.');
+     throw new Meteor.Error('Conversations.methods.insertConversation.notLoggedIn',
+       'Must be logged in to start a conversatin.');
    }
-
-    Messages.insert(message);
+   if(Conversations.findOne({channelType:conversation.channelType,channelId:conversation.channelId,userOne:conversation.userOne, userTwo:conversation.userOne})){
+     throw new Meteor.Error('Conversations.methods.insertConversation.alreadyExists',
+       'Already have a running conversation for that order');
+ }
+    Conversations.insert(conversation);
   },
 });
 
-export default insertMessage;
+export default insertConversation;
 
 
 rateLimit({
   methods: [
-    insertMessage,
+    insertConversation,
   ],
   limit: 5,
   timeRange: 1000,

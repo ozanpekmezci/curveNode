@@ -4,9 +4,6 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 const Messages = new Meteor.Collection("Messages");
 export default Messages;
-if ( Meteor.isServer ) {
-  Messages._ensureIndex({orderId: 1, channelId: 1}, {unique: 1});
-}
 Messages.allow({
   insert: () => false,
   update: () => false,
@@ -20,13 +17,9 @@ Messages.deny({
 });
 
 Messages.schema = new SimpleSchema({
-  channelId: {
+  conversationId: {
     type: String,
-    label: "The ID of the channel that the messages belong to"
-  },
-  orderId: {
-    type: String,
-    label: "The ID of the order the the conversation belong to"
+    label: "The ID of the conversation that the messages belong to"
   },
   senderId: {
     type: String,
@@ -40,12 +33,12 @@ Messages.schema = new SimpleSchema({
     type: Date,
     label: 'The date of creation'
   },
-  price: {
-    type: Number,
-    label: 'The price of the order'
+  body: {
+    type: String,
+    label: 'The body of the message'
   },
 });
 
-Orders.attachSchema(Orders.schema);
+Messages.attachSchema(Messages.schema);
 
 //TODO: add factory, faker etc.

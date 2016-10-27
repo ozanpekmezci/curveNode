@@ -9,8 +9,7 @@ const insertMessage = new ValidatedMethod({
   validate: new SimpleSchema({
     senderId: {type: String},
     receiverId: {type: String},
-    channelId: {type: String},
-    orderId: {type: String},
+    conversationId: {type: String},
     timestamp: {type: Date},
     body: {type: String}
   }).validator(),

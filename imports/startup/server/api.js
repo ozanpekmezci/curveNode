@@ -6,3 +6,7 @@ import '../../api/supplies/methods.js';
 import '../../api/supplies/server/publications.js';
 import '../../api/orders/methods.js';
 import '../../api/orders/server/publications.js';
+import '../../api/conversations/methods.js';
+import '../../api/conversations/server/publications.js';
+import '../../api/messages/methods.js';
+import '../../api/messages/server/publications.js';

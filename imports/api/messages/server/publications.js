@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import Orders from '../orders';
+import Messages from '../messages';
 
-Meteor.publish('Orders', function(orderId) {
-  check(orderId, String);
-  return Orders.find({ _id: orderId });
+Meteor.publish('Messages', function(conversationId) {
+  check(conversationId, String);
+  return Messages.find({ conversationId: conversationId });
 });
