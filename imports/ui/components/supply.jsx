@@ -18,6 +18,7 @@ const handleRespondtoSupply= (supply) => {
   }, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
+      browserHistory.push(`/products/${supply.productId}`);
     }
   });
   browserHistory.push(`/orders/${orderId}`);

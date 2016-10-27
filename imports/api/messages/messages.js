@@ -2,39 +2,39 @@ import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 
-const Orders = new Meteor.Collection("Orders");
-export default Orders;
+const Messages = new Meteor.Collection("Messages");
+export default Messages;
 if ( Meteor.isServer ) {
-  Orders._ensureIndex({supplyId: 1, buyerId: 1}, {unique: 1});
+  Messages._ensureIndex({orderId: 1, channelId: 1}, {unique: 1});
 }
-Orders.allow({
+Messages.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Orders.deny({
+Messages.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-Orders.schema = new SimpleSchema({
-  productId: {
+Messages.schema = new SimpleSchema({
+  channelId: {
     type: String,
-    label: "The ID of the product that the oder belongs to"
+    label: "The ID of the channel that the messages belong to"
   },
-  supplyId: {
+  orderId: {
     type: String,
-    label: "The ID of the supply that the oder belongs to"
+    label: "The ID of the order the the conversation belong to"
   },
-  buyerId: {
+  senderId: {
     type: String,
-    label: "The ID of the user that buys"
+    label: "The ID of the that sends the message"
   },
-  sellerId: {
+  recevierId: {
     type: String,
-    label: "The ID of the user that sells"
+    label: "The ID of the user that receives the message"
   },
   timestamp: {
     type: Date,

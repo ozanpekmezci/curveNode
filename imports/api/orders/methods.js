@@ -15,6 +15,15 @@ export const insertOrder = new ValidatedMethod({
     timestamp: {type: Date}
   }).validator(),
   run(order) {
+    if (!this.userId) {
+     // Throw errors with a specific error code
+     throw new Meteor.Error('Orders.methods.insertOrder.notLoggedIn',
+       'Must be logged in to insert order.');
+   }
+    if( Orders.findOne({supplyId:order.supplyId,buyerId:order.buyerId})){
+      throw new Meteor.Error('Orders.methods.insertOrder.alreadyExists',
+        'Already have a running order for that supply');
+  }
     return Orders.insert(order);
   },
 });
