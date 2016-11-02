@@ -25,7 +25,7 @@ Messages.schema = new SimpleSchema({
     type: String,
     label: "The ID of the that sends the message"
   },
-  recevierId: {
+  receiverId: {
     type: String,
     label: "The ID of the user that receives the message"
   },

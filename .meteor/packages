@@ -37,3 +37,4 @@ react-meteor-data
 shell-server@0.2.1
 aldeed:simple-schema
 practicalmeteor:chai
+reywood:publish-composite

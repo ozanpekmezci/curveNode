@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import {Bert} from 'meteor/themeteorchef:bert';
 import { browserHistory } from 'react-router'
 import { insertOrder } from '../../api/orders/methods.js';
+import insertConversation from '../../api/conversations/methods.js';
 
 const handleRespondtoSupply= (supply) => {
   //bu sekilde insert'te id alabilirsin, feature of meteor
@@ -21,6 +22,18 @@ const handleRespondtoSupply= (supply) => {
       browserHistory.push(`/products/${supply.productId}`);
     }
   });
+  insertConversation.call({
+    userOne: Meteor.userId(),
+    userTwo: supply.userId,
+    channelId: orderId,
+    channelType: "orders",
+    timestamp: new Date(),
+}, (error) => {
+  if (error) {
+    Bert.alert(error.reason, 'danger');
+    browserHistory.push(`/products/${supply.productId}`);
+  }
+});
   browserHistory.push(`/orders/${orderId}`);
 };
 

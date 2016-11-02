@@ -1,17 +1,18 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-//import SuppliesList from '../containers/supplies-list.jsx';
-//import AddSupply from '../components/add-supply.jsx';
+import MessagesList from '../containers/messages-list.jsx';
+import AddMessage from '../containers/add-message.jsx';
 
-const OrderDetail = ({params}) => (
+const Order = ({params}) => (
   <Row>
     <Col xs={12}>
       <h4 className="page-header">Order Details</h4>
-      <p>{params.id}</p>
+      <MessagesList channelId={params.id} channelType={"orders"} />
+      <AddMessage channelId={params.id} channelType={"orders"} />
     </Col>
   </Row>
 );
-export default OrderDetail;
-OrderDetail.propTypes = {
+export default Order;
+Order.propTypes = {
   params: React.PropTypes.object,
 };
