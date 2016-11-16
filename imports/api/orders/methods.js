@@ -20,9 +20,10 @@ export const insertOrder = new ValidatedMethod({
      throw new Meteor.Error('Orders.methods.insertOrder.notLoggedIn',
        'Must be logged in to insert order.');
    }
-    if( Orders.findOne({supplyId:order.supplyId,buyerId:order.buyerId})){
+    const existingOrder = Orders.findOne({supplyId:order.supplyId,buyerId:order.buyerId})
+    if(existingOrder){
       throw new Meteor.Error('Orders.methods.insertOrder.alreadyExists',
-        'Already have a running order for that supply');
+        'Already have a running order for that supply',existingOrder._id);
   }
     return Orders.insert(order);
   },

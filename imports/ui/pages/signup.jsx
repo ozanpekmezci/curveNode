@@ -4,27 +4,26 @@ import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bo
 import handleSignup from '../../modules/signup';
 
 class Signup extends React.Component {
-  static handleSubmit(event) {
-    event.preventDefault();
-  }
+
   componentDidMount() {
     handleSignup({ component: this });
   }
-
+  handleSubmit(event) {
+   event.preventDefault();
+  }
 
 
   render() {
     return( <Row>
       <Col xs={12} sm={6} md={4}>
         <h4 className="page-header">Sign Up</h4>
-        <form ref="signup" className="signup" onSubmit={Signup.handleSubmit}>
+        <form ref={form => (this.signupForm = form)} className="signup" onSubmit={this.handleSubmit}>
           <Row>
             <Col xs={6} sm={6}>
               <FormGroup>
                 <ControlLabel>First Name</ControlLabel>
                 <FormControl
                   type="text"
-                  ref="firstName"
                   name="firstName"
                   placeholder="First Name"
                 />
@@ -35,7 +34,6 @@ class Signup extends React.Component {
                 <ControlLabel>Last Name</ControlLabel>
                 <FormControl
                   type="text"
-                  ref="lastName"
                   name="lastName"
                   placeholder="Last Name"
                 />
@@ -46,7 +44,6 @@ class Signup extends React.Component {
             <ControlLabel>Email Address</ControlLabel>
             <FormControl
               type="text"
-              ref="emailAddress"
               name="emailAddress"
               placeholder="Email Address"
             />
@@ -55,7 +52,6 @@ class Signup extends React.Component {
             <ControlLabel>Username</ControlLabel>
             <FormControl
               type="text"
-              ref="username"
               name="username"
               placeholder="Username"
             />
@@ -64,7 +60,6 @@ class Signup extends React.Component {
             <ControlLabel>Password</ControlLabel>
             <FormControl
               type="password"
-              ref="password"
               name="password"
               placeholder="Password"
             />

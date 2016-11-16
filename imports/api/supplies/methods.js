@@ -7,7 +7,7 @@ import rateLimit from '../../modules/rate-limit.js';
 export const insertSupply = new ValidatedMethod({
   name: 'supplies.insert',
   validate: new SimpleSchema({
-    description: { type: String, max: 1000 },
+    body: { type: String, max: 1000 },
     price: { type: Number, min: 1 },
     userId: {type: String},
     productId: {type: String},
@@ -22,7 +22,7 @@ export const updateSupply = new ValidatedMethod({
   name: 'supplies.update',
   validate: new SimpleSchema({
     _id: { type: String },
-    'update.description': { type: String, optional: true },
+    'update.body': { type: String, optional: true },
     'update.price': { type: String, optional: true },
   }).validator(),
   run({ _id, update }) {

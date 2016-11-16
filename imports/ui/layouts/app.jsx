@@ -1,17 +1,20 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap';
-import AppNavigation from '../containers/app-navigation';
+import {Grid} from 'react-bootstrap';
+import AppNavigation from '../containers/AppNavigation';
 
-export default class App extends React.Component{
-  render() {
-    return( <div>
+const App = ({children}) => {
+  return (
+    <div>
       <AppNavigation />
       <Grid>
-        { this.props.children }
+        {children}
       </Grid>
-    </div>);
-  }
-}
+    </div>
+
+  );
+
+};
+export default App;
 App.propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: React.PropTypes.element.isRequired
 };

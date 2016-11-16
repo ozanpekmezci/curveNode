@@ -22,10 +22,10 @@ export default class FollowUnfollowUserItem extends React.Component {
              <Button type="button" className="btn btn-default" id="unfollow" onClick={this.unfollowUser}>
                Unfollow @{this.props.user.username}</Button>
            </div>:
-             < div className="found-user">
-               <Button type="button" className="btn btn-default" id="follow" onClick={this.followUser}>
+           < div className="found-user">
+             <Button type="button" className="btn btn-default" id="follow" onClick={this.followUser}>
                  Follow @{this.props.user.username}</Button>
-             </div>
+           </div>
     }
        </div>
   );

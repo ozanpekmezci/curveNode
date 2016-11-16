@@ -1,32 +1,31 @@
-import $ from 'jquery';
-import 'jquery-validation';
+/* eslint-disable no-undef */
 import {Meteor} from 'meteor/meteor';
 // import { browserHistory } from 'react-router';
 // import { Accounts } from 'meteor/accounts-base';
 import {Bert} from 'meteor/themeteorchef:bert';
-import getInputValue from './get-input-value';
 import {insertProduct} from '../api/products/methods.js';
+import './validation.js';
 
 let component;
 
 const getProductData = () => ({
-  title: getInputValue(component.refs.title),
-  description: getInputValue(component.refs.description),
-  price: parseInt(getInputValue(component.refs.price), 10),
+  title: document.querySelector('[name="title"]').value,
+  body: document.querySelector('[name="body"]').value.trim(),
+  price: parseInt(document.querySelector('[name="price"]').value, 10),
   tags: component.state.tags.map(tag => tag.text)
 });
 
 const add = () => {
   const product = getProductData();
   const title = product.title;
-  const description = product.description;
+  const body = product.body;
   const price = product.price;
   const tags = product.tags;
   const userId = Meteor.userId();
   const timestamp= new Date();
   insertProduct.call({
     title,
-    description,
+    body,
     price,
     tags,
     userId,
@@ -43,13 +42,13 @@ const add = () => {
 };
 
 const validate = () => {
-  $(component.refs.addProduct).validate({
+  $(component.addProductForm).validate({
     rules: {
       title: {
         required: true,
         maxlength: 200
       },
-      description: {
+      body: {
         required: true,
         maxlength: 1000
       },
@@ -63,8 +62,8 @@ const validate = () => {
         required: 'Title?',
         maxlength: 'Make it shorter'
       },
-      description: {
-        required: 'Description?',
+      body: {
+        required: 'body?',
         maxlength: 'Make it shorter'
       },
       price: {

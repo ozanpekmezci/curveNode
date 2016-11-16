@@ -1,8 +1,8 @@
 import {composeWithTracker} from 'react-komposer';
 import {Meteor} from 'meteor/meteor';
-import FollowUsers from '../components/follow-users.jsx';
-import Loading from '../components/loading.jsx';
-import findFollowings from '../../api/userUtils';
+import FollowUsers from '../components/FollowUsers.jsx';
+import Loading from '../components/Loading.jsx';
+import {findFollowings} from '../../api/userUtils';
 
 const composer = (params, onData) => {
   const userId =  Meteor.userId();

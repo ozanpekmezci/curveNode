@@ -1,17 +1,16 @@
-import $ from 'jquery';
-import 'jquery-validation';
+/* eslint-disable no-undef */
 import {Meteor} from 'meteor/meteor';
 // import { browserHistory } from 'react-router';
 // import { Accounts } from 'meteor/accounts-base';
 import {Bert} from 'meteor/themeteorchef:bert';
-import getInputValue from './get-input-value';
 import {insertSupply} from '../api/supplies/methods.js';
+import './validation.js';
 
 let component;
 
 const getSupplyData = () => ({
-  description: getInputValue(component.refs.description),
-  price: parseInt(getInputValue(component.refs.price), 10),
+  body: document.querySelector('[name="body"]').value,
+  price: parseInt(document.querySelector('[name="price"]').value, 10),
   productId: component.props.productId,
   timestamp: new Date(),
   userId: Meteor.userId(),
@@ -31,9 +30,9 @@ const add = () => {
 };
 
 const validate = () => {
-  $(component.refs.addSupply).validate({
+  $(component.form).validate({
     rules: {
-      description: {
+      body: {
         required: true,
         maxlength: 1000
       },
@@ -43,8 +42,8 @@ const validate = () => {
       }
     },
     messages: {
-      description: {
-        required: 'Description?',
+      body: {
+        required: 'body?',
         maxlength: 'Make it shorter'
       },
       price: {

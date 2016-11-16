@@ -1,6 +1,6 @@
 import React from 'react';
 import {ListGroup, Alert} from 'react-bootstrap';
-import Product from './product.jsx';
+import Product from './Product.jsx';
 
 const ProductsList = ({products, user}) => (products.length > 0
   ? <ListGroup className="products-list">

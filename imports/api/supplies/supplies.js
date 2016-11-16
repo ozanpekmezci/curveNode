@@ -30,9 +30,9 @@ Supplies.schema = new SimpleSchema({
     type: Date,
     label: 'The date of creation'
   },
-  description: {
+  body: {
     type: String,
-    label: 'The description of the supply'
+    label: 'The body of the supply'
   },
   price: {
     type: Number,

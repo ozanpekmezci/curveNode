@@ -7,9 +7,6 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import  handleAddition  from '../../modules/add-product';
 
 export default class AddProduct extends React.Component {
-  static handleSubmit(event) {
-    event.preventDefault();
-  }
   constructor(props) {
     super(props);
 
@@ -25,6 +22,7 @@ export default class AddProduct extends React.Component {
   }
   componentDidUpdate() {
     handleAddition({ component: this });
+    //setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
 
 
@@ -68,12 +66,11 @@ export default class AddProduct extends React.Component {
         {this.state.adding ?
           <Row>
             <Col xs={12} sm={6} md={4}>
-              <form ref="addProduct" className="addProduct" onSubmit={AddProduct.handleSubmit}>
+              <form ref={form => (this.addProductForm = form)} className="addProduct" onSubmit={event => event.preventDefault()}>
                 <Row>
                   <FormGroup>
                     <FormControl
                       type="text"
-                      ref="title"
                       name="title"
                       placeholder="Type a product title."
                     />
@@ -83,9 +80,8 @@ export default class AddProduct extends React.Component {
                   <FormGroup>
                     <FormControl
                       type="text"
-                      ref="description"
-                      name="description"
-                      placeholder="Type a product description"
+                      name="body"
+                      placeholder="Type a product body"
                     />
                   </FormGroup>
                 </Row>
@@ -93,7 +89,6 @@ export default class AddProduct extends React.Component {
                   <FormGroup>
                     <FormControl
                       type="number"
-                      ref="price"
                       name="price"
                       placeholder="How much?"
                     />
@@ -102,7 +97,7 @@ export default class AddProduct extends React.Component {
                 <Row>
                   <div>
                     <ReactTags
-                      ref="tag" tags={tags}
+                      name="tag" tags={tags}
                       suggestions={suggestions}
                       handleDelete={this.handleDelete}
                       handleAddition={this.handleAddition}

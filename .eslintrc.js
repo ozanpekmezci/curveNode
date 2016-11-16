@@ -1,4 +1,5 @@
 module.exports = {
+  "parser": "babel-eslint",
   "globals": {
     "document": true,
     "foo": true,
@@ -13,6 +14,7 @@ module.exports = {
   ],
   "extends": ["airbnb","eslint:recommended", "plugin:react/recommended","plugin:meteor/recommended"],
   parserOptions: {
+    "allowImportExportEverywhere": true,
     ecmaFeatures: {
       jsx: true,
     },
@@ -24,29 +26,28 @@ module.exports = {
   // View link below for react rules documentation
   // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
   rules: {
+    "strict": 0,
+     "no-extra-parens": 0,
+    "import/no-unresolved": 0,
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "_id",
+          "_ensureIndex",
+          "_verifyEmailToken",
+          "_resetPasswordToken",
+          "_name"
+        ]
+      }
+    ],
     "import/no-extraneous-dependencies": "off",
     "import/extensions":"off",
     // Specify whether double or single quotes should be used in JSX attributes
     // http://eslint.org/docs/rules/jsx-quotes
     'jsx-quotes': ['error', 'prefer-double'],
 
-    'class-methods-use-this': ['error', {
-      exceptMethods: [
-        'render',
-        'getInitialState',
-        'getDefaultProps',
-        'getChildContext',
-        'componentWillMount',
-        'componentDidMount',
-        'componentWillReceiveProps',
-        'shouldComponentUpdate',
-        'componentWillUpdate',
-        'componentDidUpdate',
-        'componentWillUnmount',
-      //  'handleSubmit',
-        //'renderNavigation',
-      ],
-    }],
+    "class-methods-use-this": 0,
 
     // Prevent missing displayName in a React component definition
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md

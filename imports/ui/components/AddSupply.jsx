@@ -28,21 +28,22 @@ export default class AddSupply extends React.Component {
   render() {
     return (
       <div>
-        <Button className="addSupplyButton" onClick={this.toggleForm} bsStyle="primary">
-          <span className="icon-plus" />
-          Supply it!
-        </Button>
+        {this.props.cansupply?
+          <Button className="addSupplyButton" onClick={this.toggleForm} bsStyle="primary">
+            <span className="icon-plus" />
+            Supply it!
+          </Button>
+        :null}
         {this.state.adding ?
           <Row>
             <Col xs={12} sm={6} md={4}>
-              <form ref="addSupply" className="addSupply" onSubmit={AddSupply.handleSubmit}>
+              <form ref={form => this.form = form}className="addSupply" onSubmit={AddSupply.handleSubmit}>
                 <Row>
                   <FormGroup>
                     <FormControl
                       type="text"
-                      ref="description"
-                      name="description"
-                      placeholder="Type a product description"
+                      name="body"
+                      placeholder="Type a product body"
                     />
                   </FormGroup>
                 </Row>
@@ -50,7 +51,6 @@ export default class AddSupply extends React.Component {
                   <FormGroup>
                     <FormControl
                       type="number"
-                      ref="price"
                       name="price"
                       placeholder="How much?"
                     />
@@ -70,4 +70,5 @@ export default class AddSupply extends React.Component {
 }
 AddSupply.propTypes = {
   productId: React.PropTypes.string,
+  cansupply: React.PropTypes.bool,
 };

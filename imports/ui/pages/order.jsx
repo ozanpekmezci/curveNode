@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import MessagesList from '../containers/messages-list.jsx';
-import AddMessage from '../containers/add-message.jsx';
+import MessagesList from '../containers/MessagesList.jsx';
+import AddMessage from '../containers/AddMessage.jsx';
 
 const Order = ({params}) => (
   <Row>

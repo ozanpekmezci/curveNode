@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import ProductsList from '../containers/products-list.js';
-import  AddProduct  from '../components/add-product.jsx';
-import SearchBar from '../components/search-bar.jsx';
-import FollowUsers from '../containers/follow-users.jsx';
+import ProductsList from '../containers/ProductsList.js';
+import  AddProduct  from '../components/AddProduct.jsx';
+import SearchBar from '../components/SearchBar.jsx';
+import FollowUsers from '../containers/FollowUsers.jsx';
 
 
 export default class Products extends React.Component {

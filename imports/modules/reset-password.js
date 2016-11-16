@@ -1,15 +1,15 @@
-import $ from 'jquery';
-import 'jquery-validation';
+/* eslint-disable no-undef */
+
 import { browserHistory } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
-import getInputValue from './get-input-value';
+import './validation.js';
 
 let component;
 let token;
 
 const handleReset = () => {
-  const password = getInputValue(component.refs.newPassword);
+  const password = document.querySelector('[name="newPassword"]').value;
   Accounts.resetPassword(token, password, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
@@ -21,7 +21,7 @@ const handleReset = () => {
 };
 
 const validate = () => {
-  $(component.refs.resetPassword).validate({
+  $(component.resetPasswordForm).validate({
     rules: {
       newPassword: {
         required: true,

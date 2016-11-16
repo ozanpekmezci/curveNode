@@ -2,16 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Meteor } from 'meteor/meteor';
-import App from '../../ui/layouts/app.jsx';
-import Products from '../../ui/pages/products.jsx';
-import Index from '../../ui/pages/index.jsx';
-import Login from '../../ui/pages/login.jsx';
-import NotFound from '../../ui/pages/not-found.jsx';
-import RecoverPassword from '../../ui/pages/recover-password.jsx';
-import ResetPassword from '../../ui/pages/reset-password.jsx';
-import Signup from '../../ui/pages/signup.jsx';
-import ProductDetail from '../../ui/pages/product-detail.jsx';
-import Order from '../../ui/pages/order.jsx';
+import App from '../../ui/layouts/App.jsx';
+import Products from '../../ui/pages/Products.jsx';
+import Index from '../../ui/pages/Index.jsx';
+import Login from '../../ui/pages/Login.jsx';
+import NotFound from '../../ui/pages/NotFound.jsx';
+import RecoverPassword from '../../ui/pages/RecoverPassword.jsx';
+import ResetPassword from '../../ui/pages/ResetPassword.jsx';
+import Signup from '../../ui/pages/Signup.jsx';
+import ProductDetail from '../../ui/pages/ProductDetail.jsx';
+import Order from '../../ui/pages/Order.jsx';
 
 const requireAuth = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {

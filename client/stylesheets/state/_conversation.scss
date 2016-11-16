@@ -2,10 +2,10 @@
 .message-received
 {
 position: relative;
-width: 250px;
-height: 120px;
+width: 125px;
+height: 60px;
 padding: 0px;
-background: #6BFFFF;
+background: #D2FFFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
@@ -13,24 +13,25 @@ border-radius: 10px;
 
 .message-received:after
 {
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 15px 15px 15px 0;
-border-color: transparent #6BFFFF;
-display: block;
-width: 0;
-z-index: 1;
-left: -15px;
-top: 45px;
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 9px 8px 9px 0;
+	border-color: transparent #D2FFFF;
+	display: block;
+	width: 0;
+	z-index: 1;
+	margin-top: -9px;
+	left: -8px;
+	top: 59%;
 }
 .message-sent
 {
 position: relative;
-width: 250px;
-height: 120px;
+width: 125px;
+height: 60px;
 padding: 0px;
-background: #6BFFFF;
+background: #D2FFFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
@@ -38,14 +39,15 @@ border-radius: 10px;
 
 .message-sent:after
 {
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 15px 0 15px 15px;
-border-color: transparent #6BFFFF;
-display: block;
-width: 0;
-z-index: 1;
-right: -15px;
-top: 45px;
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 9px 0 9px 8px;
+	border-color: transparent #D2FFFF;
+	display: block;
+	width: 0;
+	z-index: 1;
+	margin-top: -9px;
+	right: -8px;
+	top: 59%;
 }

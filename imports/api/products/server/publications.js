@@ -15,7 +15,7 @@ Meteor.publish("products", function(searchValue) {
    query = {
       $or: [
         { title: regex },
-        { description: regex }
+        { body: regex }
       ]
     };
    projection.limit = 100;

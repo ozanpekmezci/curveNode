@@ -1,15 +1,14 @@
-import $ from 'jquery';
-import 'jquery-validation';
+/* eslint-disable no-undef */
 // import { browserHistory } from 'react-router';
 // import { Accounts } from 'meteor/accounts-base';
 import {Bert} from 'meteor/themeteorchef:bert';
-import getInputValue from './get-input-value';
 import {findUser} from '../api/relationships/methods.js';
+import './validation.js';
 
 let component;
 
 const getUserData = () => ({
-  searchUser: getInputValue(component.refs.searchUser)
+  searchUser: document.querySelector('[name="searchUser"]').value
 });
 
 const find = () => {
@@ -26,7 +25,7 @@ const find = () => {
 };
 
 const validate = () => {
-  $(component.refs.findUser).validate({
+  $(component.searchUserForm).validate({
     rules: {
       searchUser: {
         required: true,

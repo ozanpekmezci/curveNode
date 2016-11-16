@@ -17,12 +17,11 @@ class Login extends React.Component {
     return( <Row>
       <Col xs={12} sm={6} md={4}>
         <h4 className="page-header">Login</h4>
-        <form ref="login" className="login" onSubmit={Login.handleSubmit}>
+        <form ref={form => (this.loginForm = form)} className="login" onSubmit={Login.handleSubmit}>
           <FormGroup>
             <ControlLabel>Email Address</ControlLabel>
             <FormControl
               type="email"
-              ref="emailAddress"
               name="emailAddress"
               placeholder="Email Address"
             />
@@ -34,7 +33,6 @@ class Login extends React.Component {
             </ControlLabel>
             <FormControl
               type="password"
-              ref="password"
               name="password"
               placeholder="Password"
             />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import SuppliesList from '../containers/supplies-list.jsx';
-import AddSupply from '../components/add-supply.jsx';
+import SuppliesList from '../containers/SuppliesList.jsx';
+import AddSupply from '../containers/AddSupply.jsx';
 
 const ProductDetail = ({params}) => (
   <Row>

@@ -8,14 +8,14 @@ export const insertProduct = new ValidatedMethod({
   name: 'products.insert',
   validate: new SimpleSchema({
     title: { type: String, max: 200 },
-    description: { type: String, max: 1000 },
+    body: { type: String, max: 1000 },
     price: { type: Number, min: 1 },
     tags: { type: [String], maxCount: 10 },
     userId: {type: String},
     timestamp: {type: Date}
   }).validator(),
   run(product) {
-    Products.insert(product);
+    return Products.insert(product);
   },
 });
 
@@ -35,7 +35,7 @@ export const updateProduct = new ValidatedMethod({
     if(this.userId !==product.userId) {
       throw new Meteor.Error('not-authorized');
     }
-    Products.update(_id, { $set: update });
+    return Products.update(_id, { $set: update });
   },
 });
 

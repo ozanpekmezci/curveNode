@@ -14,66 +14,32 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
-    "chimp": "^0.39.4",
-    "eslint": "^3.7.1",
-    "eslint-config-airbnb": "^12.0.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "chimp": "^0.41.2",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
     "eslint-import-resolver-meteor": "^0.3.3",
-    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-meteor": "^3.6.0",
-    "eslint-plugin-react": "^6.4.1"
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "plugins": [
-      "meteor",
-      "react"
-    ],
-    "extends": [
-      "airbnb/base",
-      "plugin:meteor/guide",
-      "plugin:react/recommended"
-    ],
-    "globals": {
-      "server": false,
-      "browser": false,
-      "expect": false
-    },
-    "rules": {
-      "import/no-unresolved": 0,
-      "no-underscore-dangle": [
-        "error",
-        {
-          "allow": [
-            "_id",
-            "_ensureIndex",
-            "_verifyEmailToken",
-            "_resetPasswordToken",
-            "_name"
-          ]
-        }
-      ]
-    }
+    "eslint-plugin-meteor": "^4.0.1",
+    "eslint-plugin-react": "^6.6.0"
   },
   "dependencies": {
+    "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
     "bootstrap": "^3.3.7",
+    "faker": "^3.1.0",
     "fibers": "^1.0.15",
     "jquery": "^2.2.4",
     "jquery-validation": "^1.15.1",
     "meteor-node-stubs": "^0.2.3",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
-    "react-bootstrap": "^0.30.5",
+    "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
     "react-komposer": "^1.13.1",
-    "react-router": "^2.8.1",
+    "react-router": "^3.0.0",
     "react-router-bootstrap": "^0.23.1",
-    "react-tag-input": "^4.3.3",
-    "faker": "^3.1.0"
+    "react-tag-input": "^4.3.3"
   }
 }

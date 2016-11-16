@@ -23,12 +23,11 @@ class ResetPassword extends React.Component {
           To reset your password, enter a new one below. You will be logged in
 with your new password.
         </Alert>
-        <form ref="resetPassword" className="reset-password" onSubmit={ResetPassword.handleSubmit}>
+        <form ref={form => (this.resetPasswordForm = form)} className="reset-password" onSubmit={ResetPassword.handleSubmit}>
           <FormGroup>
             <ControlLabel>New Password</ControlLabel>
             <FormControl
               type="password"
-              ref="newPassword"
               name="newPassword"
               placeholder="New Password"
             />
@@ -37,7 +36,6 @@ with your new password.
             <ControlLabel>Repeat New Password</ControlLabel>
             <FormControl
               type="password"
-              ref="repeatNewPassword"
               name="repeatNewPassword"
               placeholder="Repeat New Password"
             />

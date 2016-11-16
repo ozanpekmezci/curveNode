@@ -1,6 +1,6 @@
 import React from 'react';
 import {ListGroup, Alert} from 'react-bootstrap';
-import Message from './message.jsx';
+import Message from './Message.jsx';
 
 const MessagesList = ({messages, user}) => (messages.length > 0
   ? <ListGroup className="products-list">

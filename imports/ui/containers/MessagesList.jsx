@@ -1,8 +1,8 @@
 import { composeWithTracker } from 'react-komposer';
 import { Meteor } from 'meteor/meteor';
 import Messages from '../../api/messages/messages.js';
-import MessagesList from '../components/messages-list.jsx';
-import Loading from '../components/loading.jsx';
+import MessagesList from '../components/MessagesList.jsx';
+import Loading from '../components/Loading.jsx';
 
 const composer = (params, onData) => {
   const subscription = Meteor.subscribe('MessagesofChannel',params.channelId,params.channelType);

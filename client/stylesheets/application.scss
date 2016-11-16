@@ -2,11 +2,12 @@
 @import "base/animations";
 @import "base/forms";
 
-@import "module/loading";
-@import "module/login";
-@import "module/signup";
+@import "module/Loading";
+@import "module/Login";
+@import "module/Signup";
+@import "module/PageHeader";
 
-@import "state/navbar";
-@import "state/reactTags";
-@import "state/twitter";
-@import "state/conversation";
+@import "state/Navbar";
+@import "state/ReactTags";
+@import "state/Twitter";
+@import "state/Conversation";

@@ -19,11 +19,10 @@ class RecoverPassword extends React.Component {
         <Alert bsStyle="info">
           Enter your email address below to receive a link to reset your password.
         </Alert>
-        <form ref="recoverPassword" className="recover-password" onSubmit={RecoverPassword.handleSubmit}>
+        <form ref={form => (this.recoverPasswordForm = form)} className="recover-password" onSubmit={RecoverPassword.handleSubmit}>
           <FormGroup>
             <FormControl
               type="email"
-              ref="emailAddress"
               name="emailAddress"
               placeholder="Email Address"
             />

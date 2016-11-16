@@ -1,13 +1,14 @@
-import faker from 'faker';
+import faker from 'faker'; //TODO: base
 import {Mongo} from 'meteor/mongo';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Factory} from 'meteor/dburles:factory';
 import {Meteor} from 'meteor/meteor';
 
+
 const Products = new Mongo.Collection('Products');
 export default Products;
 if ( Meteor.isServer ) {
-  Products._ensureIndex( { title: 1, description: 1 } );
+  Products._ensureIndex( { title: 1, body: 1 } );
 }
 Products.allow({
   insert: () => false,
@@ -26,9 +27,9 @@ Products.schema = new SimpleSchema({
     type: String,
     label: 'The title of the product.'
   },
-  description: {
+  body: {
     type: String,
-    label: 'The description of the product'
+    label: 'The body of the product'
   },
   price: {
     type: Number,
