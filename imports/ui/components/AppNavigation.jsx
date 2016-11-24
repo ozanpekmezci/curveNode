@@ -5,8 +5,8 @@ import PublicNavigation from './PublicNavigation.jsx';
 import AuthenticatedNavigation from './AuthenticatedNavigation.jsx';
 
 class AppNavigation extends React.Component {
-  static renderNavigation(hasUser) {
-    return hasUser ? <AuthenticatedNavigation /> : <PublicNavigation />;
+  static renderNavigation(hasUser,notifications) {
+    return hasUser ? <AuthenticatedNavigation notifications={notifications} /> : <PublicNavigation />;
   }
 
   render() {
@@ -18,7 +18,7 @@ class AppNavigation extends React.Component {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-        { AppNavigation.renderNavigation(this.props.hasUser) }
+        { AppNavigation.renderNavigation(this.props.hasUser, this.props.notifications) }
       </Navbar.Collapse>
     </Navbar>);
   }
@@ -26,4 +26,5 @@ class AppNavigation extends React.Component {
 export default AppNavigation;
 AppNavigation.propTypes = {
   hasUser: React.PropTypes.object,
+  notifications: React.PropTypes.array
 };
