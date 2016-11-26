@@ -67,6 +67,9 @@ export default class Product extends React.Component {
           Bert.alert(error.reason, 'danger');
         } else {
           Bert.alert('Product updated!', 'success');
+          this.setState({
+            editing: !this.state.editing
+          });
         }
       });
     }

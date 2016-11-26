@@ -5,6 +5,7 @@ import {Meteor} from 'meteor/meteor';
 import {Bert} from 'meteor/themeteorchef:bert';
 import {insertSupply} from '../api/supplies/methods.js';
 import './validation.js';
+import insertNotification from '../api/notifications/methods.js';
 
 let component;
 
@@ -15,18 +16,35 @@ const getSupplyData = () => ({
   timestamp: new Date(),
   userId: Meteor.userId(),
 });
+const getNofiticationData = (supplyId) => ({
+  timestamp: new Date(),
+  actorId: Meteor.userId(),
+  receiverId: component.props.productOwner,
+  notifiableId:supplyId,
+  notifiableType: "Supply",
+  url: `/products/${component.props.productId}` ,
+});
 
 const add = () => {
   const supply = getSupplyData();
-  insertSupply.call(supply, (error) => {
+  const supplyId =  insertSupply.call(supply, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
       // target.value = '';
+
       component.toggleForm();
       Bert.alert('Supply added!', 'success');
     }
   });
+  const notification = getNofiticationData(supplyId);
+  const notid= insertNotification.call(notification, (error) => {
+    if (error) {
+      console.log(error.reason);
+      Bert.alert(error.reason, 'danger');
+    }
+  });
+  console.log(notid);
 };
 
 const validate = () => {

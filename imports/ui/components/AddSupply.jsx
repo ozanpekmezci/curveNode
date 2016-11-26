@@ -70,5 +70,6 @@ export default class AddSupply extends React.Component {
 }
 AddSupply.propTypes = {
   productId: React.PropTypes.string,
+  productOwner: React.PropTypes.string,
   cansupply: React.PropTypes.bool,
 };

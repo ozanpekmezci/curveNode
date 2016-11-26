@@ -12,8 +12,8 @@ const insertNotification = new ValidatedMethod({
     notifiableId: {type: String},
     notifiableType: {type: String},
     timestamp: {type: Date},
-    readAt: {type: Date},
-    action: {type: String}
+    readAt: {type: Date, optional: true},
+    url: {type: String},
   }).validator(),
   run(notification) {
     if (!this.userId) {
@@ -22,7 +22,7 @@ const insertNotification = new ValidatedMethod({
        'Must be logged in to trigger a notification.');
    }
 
-    Notifications.insert(notification);
+    return Notifications.insert(notification);
   },
 });
 

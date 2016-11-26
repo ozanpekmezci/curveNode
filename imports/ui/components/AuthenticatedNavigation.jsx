@@ -4,12 +4,14 @@ import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap';
 import {Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import {Meteor} from 'meteor/meteor';
 import FontAwesome from 'react-fontawesome';
-
+import NotificationMenuItem from './NotificationMenuItem.jsx';
 
 
 const AuthenticatedNavigation = ({notifications}) => {
 
   const handleLogout = () => Meteor.logout(() => browserHistory.push('/login'));
+  const handleNotificationClick = (url) => {
+  browserHistory.push(url)};
 
   const userName = () => {
     const user = Meteor.user();
@@ -20,17 +22,7 @@ const AuthenticatedNavigation = ({notifications}) => {
       ? `${name.first} ${name.last}`
       : '';
   };
-  const renderNotifications = () => {
-    let items = [];
-    for (let i = 0; i < notifications.length; i++) {
-      const item = notifications[i];
-      items.push(
 
-        <MenuItem eventKey={`4.${i + 1}`} onClick={handleLogout}>{item.notifiableType}</MenuItem>
-      );
-    }
-    return items;
-  };
 
   return (
     <div>
@@ -48,7 +40,12 @@ const AuthenticatedNavigation = ({notifications}) => {
           <MenuItem eventKey={3.1} onClick={handleLogout}>Logout</MenuItem>
         </NavDropdown>
         <NavDropdown eventKey={4} title={< FontAwesome name="bell" />} id="basic-nav-dropdown">
-          {renderNotifications()}
+          {notifications.map((notification) => {
+            return (
+
+              <NotificationMenuItem key={notification._id} notification={notification} handleNotificationClick={handleNotificationClick} />
+            );
+          })}
         </NavDropdown>
       </Nav>
     </div>

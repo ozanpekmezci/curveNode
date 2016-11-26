@@ -14,7 +14,7 @@ export const insertSupply = new ValidatedMethod({
     timestamp: {type: Date}
   }).validator(),
   run(supply) {
-    Supplies.insert(supply);
+    return Supplies.insert(supply);
   },
 });
 

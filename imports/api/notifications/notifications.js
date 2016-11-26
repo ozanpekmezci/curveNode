@@ -39,12 +39,15 @@ Notifications.schema = new SimpleSchema({
   },
   readAt: {
     type: Date,
-    label: 'The date the the receiver has read the notification'
+    label: 'The date the the receiver has read the notification',
+    optional: true,
+
   },
-  action: {
+  url: {
     type: String,
-    label: "The action  that triggers the notification"
+    label: "The url  that triggers the notification"
   },
+
 });
 
 Notifications.attachSchema(Notifications.schema);

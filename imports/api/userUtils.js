@@ -1,7 +1,6 @@
 import Relationships from './relationships/relationships';
 import Products from './products/products';
 import Supplies from './supplies/supplies';
-import Orders from './orders/orders';
 
 
 export const findFollowings = function(userId) {
