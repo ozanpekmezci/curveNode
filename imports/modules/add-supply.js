@@ -40,11 +40,9 @@ const add = () => {
   const notification = getNofiticationData(supplyId);
   const notid= insertNotification.call(notification, (error) => {
     if (error) {
-      console.log(error.reason);
       Bert.alert(error.reason, 'danger');
     }
   });
-  console.log(notid);
 };
 
 const validate = () => {
