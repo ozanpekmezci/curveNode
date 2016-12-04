@@ -38,7 +38,7 @@ const add = () => {
     }
   });
   const notification = getNofiticationData(supplyId);
-  const notid= insertNotification.call(notification, (error) => {
+  insertNotification.call(notification, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     }
