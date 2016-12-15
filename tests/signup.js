@@ -18,6 +18,7 @@ describe('Sign Up', function () {
            .setValue('[name="firstName"]', 'Carl')
            .setValue('[name="lastName"]', 'Winslow')
            .setValue('[name="emailAddress"]', 'carl.winslow@abc.com')
+           .setValue('[name="username"]', 'carlofco')
            .setValue('[name="password"]', 'bigguy1989')
            .submitForm('form');
 
