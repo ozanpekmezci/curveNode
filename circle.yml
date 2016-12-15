@@ -22,7 +22,7 @@ deployment:
   #  commands:
     #  - echo $DEPLOYMENT_TOKEN > deployment_token.json
     #  - METEOR_SESSION_FILE=deployment_token.json DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy www.YOUR_STAGING_APP.com --settings settings-development.json
-production:
+  production:
     branch: "master"
     commands:
       - echo $PROD_SETTINGS > settings-production.json
