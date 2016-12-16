@@ -11,7 +11,8 @@ export const insertSupply = new ValidatedMethod({
     price: { type: Number, min: 1 },
     userId: {type: String},
     productId: {type: String},
-    timestamp: {type: Date}
+    timestamp: {type: Date},
+    orderId: {type: String, optional: true},
   }).validator(),
   run(supply) {
     return Supplies.insert(supply);
@@ -24,6 +25,7 @@ export const updateSupply = new ValidatedMethod({
     _id: { type: String },
     'update.body': { type: String, optional: true },
     'update.price': { type: String, optional: true },
+    'update.orderId': { type: String, optional: true },
   }).validator(),
   run({ _id, update }) {
     if (!this.userId) {
@@ -32,8 +34,8 @@ export const updateSupply = new ValidatedMethod({
        'Must be logged in to update supply.');
    }
     const supply = Supplies.findOne(_id);
-    if(this.userId !==supply.userId) {
-      throw new Meteor.Error('not-authorized');
+    if(this.userId !==supply.userId && (update.body || update.price || !update.orderId) ) {
+      throw new Meteor.Error('not-authorized',"user is not authorized to do that");
     }
     Supplies.update(_id, { $set: update });
   },

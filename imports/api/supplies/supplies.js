@@ -22,6 +22,11 @@ Supplies.schema = new SimpleSchema({
     type: String,
     label: "The ID of the product that the supply was sent to"
   },
+  orderId: {
+    type: String,
+    label: "The ID of the order that the supply was sent to",
+    optional: true
+  },
   userId: {
     type: String,
     label: "The ID of the user that sent this supply"

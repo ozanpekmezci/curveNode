@@ -80,6 +80,11 @@ export default class Supply extends React.Component {
   handleRespondtoSupply = (event) => {
     event.preventDefault();
     const supply = this.state.supply;
+    if(supply.orderId){
+      console.log(supply.orderId)
+      browserHistory.push(`/orders/${supply.orderId}`);
+    }
+    else{
     //bu sekilde insert'te id alabilirsin, feature of meteor
     const orderId = insertOrder.call({
       price: supply.price,
@@ -91,12 +96,25 @@ export default class Supply extends React.Component {
     }, (error) => {
       if (error) {
         //TODO not nice, for now
+        Bert.alert(`order ${error.reason}`, 'danger');
         if (error.error === "Orders.methods.insertOrder.alreadyExists") {
           browserHistory.push(`/orders/${error.details}`);
         } else {
           Bert.alert(error.reason, 'danger');
           browserHistory.push(`/products/${supply.productId}`);
         }
+      }
+    });
+    console.log(orderId);
+    //TODO duplicate code
+    updateSupply.call({
+      _id: supply._id,
+      update: {
+        orderId
+      }
+    }, (error) => {
+      if (error) {
+        Bert.alert(`supply ${error.reason}`, 'danger');
       }
     });
     insertConversation.call({
@@ -112,6 +130,7 @@ export default class Supply extends React.Component {
       }
     });
     browserHistory.push(`/orders/${orderId}`);
+}
   }
 
   render() {
