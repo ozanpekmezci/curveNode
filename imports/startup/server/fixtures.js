@@ -3,9 +3,10 @@ import { Roles } from 'meteor/alanning:roles';
 import { Accounts } from 'meteor/accounts-base';
 
 //TODO disable reg for now
-Accounts.config({
+/*Accounts.config({
   forbidClientAccountCreation : true
 });
+*/
 const users = [{
   email: 'admin@admin.com',
   password: 'password',

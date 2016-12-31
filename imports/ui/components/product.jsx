@@ -9,9 +9,11 @@ export default class Product extends React.Component {
   constructor(props) {
     super(props);
     const productId = this.props.product._id
+    const picture = this.props.product.picture
     this.state = {
       editing: false,
-      productId: productId
+      productId: productId,
+      picture: picture,
     };
 
   }
@@ -80,17 +82,21 @@ export default class Product extends React.Component {
     return (
       <ListGroupItem key={product._id}>
         <Row>
-          <Col xs={6} sm={8}>
+          <Col xs={4} sm={6}>
             {this.getEditorLink(product, currentUser)}
           </Col>
-          <Col xs={4} sm={2}>
+          {this.props.image?
+            <Col xs={2} sm={2}>
+              <a href={this.props.image}><img src={this.props.image} alt="demand" className="thumbnail" height="42" width="42" /></a>
+            </Col>:null}
+          <Col xs={3} sm={2}>
             {currentUser._id === product.userId
               ? <Button bsStyle="primary" className="btn-block" onClick={this.handleEditProduct}>
                   Edit
               </Button>
               : ""}
           </Col>
-          <Col xs={4} sm={2}>
+          <Col xs={3} sm={2}>
             {currentUser._id === product.userId
               ? <Button bsStyle="danger" className="btn-block" onClick={this.handleRemoveProduct}>
                   Remove
@@ -105,5 +111,6 @@ export default class Product extends React.Component {
 
 Product.propTypes = {
   product: React.PropTypes.object,
-  currentUser: React.PropTypes.object
+  currentUser: React.PropTypes.object,
+  image: React.PropTypes.string
 };

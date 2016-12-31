@@ -12,3 +12,6 @@ import '../../api/messages/methods.js';
 import '../../api/messages/server/publications.js';
 import '../../api/notifications/methods.js';
 import '../../api/notifications/server/publications.js';
+import '../../api/images/methods.js';
+import '../../api/images/server/publications.js';
+import '../../api/images/server/images.js';

@@ -39,3 +39,9 @@ aldeed:simple-schema
 practicalmeteor:chai
 reywood:publish-composite
 mdg:seo
+mixmax:smart-disconnect
+cfs:standard-packages
+cfs:s3
+cfs:graphicsmagick
+cfs:filesystem
+msavin:mongol

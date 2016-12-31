@@ -1,7 +1,7 @@
 import Relationships from './relationships/relationships';
 import Products from './products/products';
 import Supplies from './supplies/supplies';
-
+import Images from './images/images';
 
 export const findFollowings = function(userId) {
   var currentFollowings = Relationships.find({follower: userId}).fetch().map(function(data) {
@@ -26,4 +26,15 @@ export const canSupply = function(userId, productId) {
     return true;
   }
 
+};
+export const getImageofProduct = function(productId){
+  if (!productId) {
+    return "";
+  }
+  const image = Images.findOne({masterType:"Product" ,masterId: productId})
+  if(!image){
+    return"";
+  }else{
+    return image.url();
+}
 };

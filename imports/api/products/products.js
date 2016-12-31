@@ -46,6 +46,11 @@ Products.schema = new SimpleSchema({
   timestamp: {
     type: Date,
     label: 'The date of creation'
+  },
+  picture: {
+    type: String,
+    label: 'The URL of the picture',
+    optional: true
   }
 });
 
